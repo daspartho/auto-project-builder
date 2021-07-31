@@ -11,15 +11,38 @@ def make_dir(parent_dir, name):
     os.mkdir(path)
     return path
 
-def CreateREADME(parent_dir, name, author):
+def createREADME(parent_dir, name, author):
     README = open(parent_dir+'\README.md', 'w')
-    README.write(f'Name: {name}\nAuthor: {author}')
+    
+    content = f"""Welcome to {name}
+Created by {author}"""
+    
+    README.write(content)
     README.close()
 
+def createMain(parent_dir, name):
+    main_file = open(parent_dir+'\main.py', 'w')
+    
+    boilerplate=f"""if __name__ == '__main__':
+    print('Welcome to {name}')"""
+                
+    main_file.write(boilerplate)
+    main_file.close()
+
+def createTODO(parent_dir, name):
+    TODO = open(parent_dir+'\TODO.md', 'w')
+    
+    content = f'TODO for {name}'
+    
+    TODO.write(content)
+    TODO.close()
+    
 def main():
     parent_dir, name, author = ask_input()
     path = make_dir(parent_dir, name)
-    CreateREADME(path, name, author)
+    createREADME(path, name, author)
+    createMain(path, name)
+    createTODO(path, name)
 
 if __name__ == '__main__':
     main()
