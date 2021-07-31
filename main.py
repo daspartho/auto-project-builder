@@ -2,6 +2,7 @@ import string
 import os
 
 def is_valid_project_name(project_name):
+    '''Checks if project name is valid and return boolean value.'''
 
     LEGAL_PROJECT_NAME_CHARS = (
     list(string.ascii_lowercase) +
@@ -19,9 +20,13 @@ def is_valid_project_name(project_name):
     return True
 
 def is_valid_author_name(author_name):
-    return len(author_name) > 0
+    '''Checks if author name is valid and returns boolean value.'''
+    
+    return len(author_name) > 0 and author_name.isalpha()
 
 def ask_input():
+    '''Asks user for parent directory, name of the project and author name and then returns a tuple consisting input.'''
+    
     parent_dir = input('Parent directory: ')
 
     while True:
@@ -29,22 +34,28 @@ def ask_input():
         if is_valid_project_name(name):
             break
         print('Invalid Project Name! Try Again!')
+        print('Project name should contains only letters, dashes and numbers, and is between 2 and 20 characters in length.')
 
     while True:
         author = input('Author: ')
         if is_valid_author_name(author):
             break
         print('Invalid Author Name! Try Again!')
+        print('Author name should contain only alphabets and be greater than 0 in length.')
         
     return parent_dir, name, author
 
 def make_dir(parent_dir, name):
+    '''Creates the project directory and return the path.'''
+    
     path = os.path.join(parent_dir, name)
     os.mkdir(path)
     print(f'Created directory {path}')
     return path
 
 def createREADME(parent_dir, name, author):
+    '''creates README.md'''
+    
     path = parent_dir+'\README.md'
     README = open(path , 'w')
     
@@ -55,6 +66,8 @@ def createREADME(parent_dir, name, author):
     print(f'Created file {path}')
 
 def createMain(parent_dir, name):
+    '''creates main python file'''
+    
     path = parent_dir+'\main.py'
     main_file = open(path, 'w')
     
@@ -65,6 +78,8 @@ def createMain(parent_dir, name):
     print(f'Created file {path}')
 
 def createTODO(parent_dir, name):
+    '''creates TODO.md'''
+    
     path = parent_dir+'\TODO.md'
     TODO = open(path, 'w')
     
