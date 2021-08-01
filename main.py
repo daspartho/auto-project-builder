@@ -1,15 +1,11 @@
 import string
 import os
 
+LEGAL_PROJECT_NAME_CHARS = string.ascii_lowercase + string.ascii_uppercase + '0123456789-_'
+
 def is_valid_project_name(project_name):
     '''Checks if project name is valid and return boolean value.'''
-
-    LEGAL_PROJECT_NAME_CHARS = (
-    list(string.ascii_lowercase) +
-    list(string.ascii_uppercase) +
-    [str(x) for x in range(0, 10)] +
-    ['-', '_'])
-
+    
     for ch in project_name:
         if ch not in LEGAL_PROJECT_NAME_CHARS:
             return False
