@@ -57,36 +57,33 @@ def createREADME(parent_dir, name, author):
     '''creates README.md'''
     
     path = parent_dir+'\README.md'
-    README = open(path , 'w')
-    
     content = f"Welcome to {name}\nCreated by {author}"
-    
-    README.write(content)
-    README.close()
+
+    with open(path, 'w') as README:
+        README.write(content)
+
     print(f'Created file {path}')
 
 def createMain(parent_dir, name):
     '''creates main python file'''
     
     path = parent_dir+'\main.py'
-    main_file = open(path, 'w')
-    
     content = f"if __name__ == '__main__':\n\tprint('Welcome to {name}')"
-                
-    main_file.write(content)
-    main_file.close()
+
+    with open(path, 'w') as main_file:            
+        main_file.write(content)
+    
     print(f'Created file {path}')
 
 def createTODO(parent_dir, name):
     '''creates TODO.md'''
     
     path = parent_dir+'\TODO.md'
-    TODO = open(path, 'w')
-    
     content = f'TODO for {name}'
     
-    TODO.write(content)
-    TODO.close()
+    with open(path, 'w') as TODO:
+        TODO.write(content)
+        
     print(f'Created file {path}')
     
 def main():
