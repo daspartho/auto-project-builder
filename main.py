@@ -52,7 +52,7 @@ def make_dir(parent_dir, name):
 def createREADME(parent_dir, name, author):
     '''creates README.md'''
     
-    path = parent_dir+'\README.md'
+    path = os.path.join(parent_dir,'README.md')
     content = f"Welcome to {name}\nCreated by {author}"
 
     with open(path, 'w') as README:
@@ -63,7 +63,7 @@ def createREADME(parent_dir, name, author):
 def createMain(parent_dir, name):
     '''creates main python file'''
     
-    path = parent_dir+'\main.py'
+    path = os.path.join(parent_dir,'main.py')
     content = f"if __name__ == '__main__':\n\tprint('Welcome to {name}')"
 
     with open(path, 'w') as main_file:            
@@ -74,7 +74,7 @@ def createMain(parent_dir, name):
 def createTODO(parent_dir, name):
     '''creates TODO.md'''
     
-    path = parent_dir+'\TODO.md'
+    path = os.path.join(parent_dir,'TODO.md')
     content = f'TODO for {name}'
     
     with open(path, 'w') as TODO:
