@@ -2,6 +2,8 @@ import string
 import os
 
 LEGAL_PROJECT_NAME_CHARS = string.ascii_lowercase + string.ascii_uppercase + '0123456789-_'
+MAX_PROJECT_NAME_LEN = 20
+MIN_PROJECT_NAME_LEN = 2
 
 def is_valid_project_name(project_name):
     '''Checks if project name is valid and return boolean value.'''
@@ -10,7 +12,7 @@ def is_valid_project_name(project_name):
         if ch not in LEGAL_PROJECT_NAME_CHARS:
             return False
 
-    if len(project_name)<2 or len(project_name)>20:
+    if len(project_name)<MIN_PROJECT_NAME_LEN or len(project_name)>MAX_PROJECT_NAME_LEN:
         return False
 
     return True
@@ -30,7 +32,7 @@ def ask_input():
         if is_valid_project_name(name):
             break
         print('Invalid Project Name! Try Again!')
-        print('Project name should contains only letters, dashes and numbers, and is between 2 and 20 characters in length.')
+        print(f'Project name should contains only letters, dashes and numbers, and is between {MIN_PROJECT_NAME_LEN} and {MAX_PROJECT_NAME_LEN} characters in length.')
 
     while True:
         author = input('Author: ')
